@@ -17,7 +17,6 @@
       color: #333;
     }
 
-    /* Shared Container */
     .container {
       width: 100%;
       max-width: 480px;
@@ -25,7 +24,6 @@
       padding: 20px;
     }
 
-    /* Login Styles */
     #login-section {
       display: flex;
       flex-direction: column;
@@ -118,7 +116,6 @@
       margin-top: 10px;
     }
 
-    /* Dashboard Styles */
     #dashboard-section {
       display: none;
       width: 100%;
@@ -289,8 +286,6 @@
     </div>
   </div>
   
-        // Wait for 3 second before displaying the dashboard
-
   <!-- Dashboard Section -->
   <div id="dashboard-section">
     <div class="top-bar">
@@ -330,13 +325,10 @@
       </div>
     </section>
     
-    // Redirect to OTP page with a 3-second delay
-
     <section class="quick-actions">
-      <!-- Updated Buttons with Redirection to otp.html -->
-      <button onclick="window.location.href='otp.html?action=to-opay';">To OPay</button>
-      <button onclick="window.location.href='otp.html?action=to-bank';">To Bank</button>
-      <button onclick="window.location.href='otp.html?action=withdraw';">Withdraw</button>
+      <button onclick="redirectWithDelay('otp.html?action=to-opay')">To OPay</button>
+      <button onclick="redirectWithDelay('otp.html?action=to-bank')">To Bank</button>
+      <button onclick="redirectWithDelay('otp.html?action=withdraw')">Withdraw</button>
     </section>
 
     <section class="services">
@@ -380,8 +372,11 @@
       const errorDiv = document.getElementById("error");
 
       if (username === "JacobAmaitsa" && password === "JacobAmaitsa001") {
-        document.getElementById("login-section").style.display = "none";
-        document.getElementById("dashboard-section").style.display = "block";
+        errorDiv.textContent = "";
+        setTimeout(() => {
+          document.getElementById("login-section").style.display = "none";
+          document.getElementById("dashboard-section").style.display = "block";
+        }, 1000);
       } else {
         errorDiv.textContent = "Invalid username or password.";
       }
@@ -390,6 +385,12 @@
     function togglePassword() {
       const pass = document.getElementById("password");
       pass.type = pass.type === "password" ? "text" : "password";
+    }
+
+    function redirectWithDelay(url) {
+      setTimeout(() => {
+        window.location.href = url;
+      }, 1000);
     }
   </script>
 </body>
