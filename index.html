@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>GoBank Login</title>
   <style>
-    /* Your existing styles */
     * {
       box-sizing: border-box;
       font-family: 'Segoe UI', sans-serif;
@@ -119,6 +118,11 @@
       margin-top: 10px;
     }
 
+    /* Dashboard Styles */
+    #dashboard-section {
+      display: none;
+      width: 100%;
+    }
   </style>
 </head>
 <body>
@@ -128,7 +132,7 @@
     <div class="container">
       <div class="header">
         <strong>GO BANK</strong>
-        <button class="register-btn" onclick="goToRegister()">Register</button>
+        <button class="register-btn" onclick="redirectToRegister()">Register</button>
       </div>
       <div class="login-card">
         <p><strong>Already registered?</strong> Use your credentials to login</p>
@@ -150,9 +154,23 @@
       </div>
     </div>
   </div>
+  
+  <!-- Dashboard Section -->
+  <div id="dashboard-section">
+    <div class="top-bar">
+      <div class="profile">
+        <img src="https://via.placeholder.com/40" alt="Profile">
+        <span>Hi, Jacob</span>
+      </div>
+      <div>
+        <span>HELP</span> &nbsp; 🔔
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
+  </div>
 
   <script>
-    // Handle Login
     function handleLogin(e) {
       e.preventDefault();
       const username = document.getElementById("username").value.trim();
@@ -167,19 +185,17 @@
       }
     }
 
-    // Toggle Password Visibility
     function togglePassword() {
       const pass = document.getElementById("password");
       pass.type = pass.type === "password" ? "text" : "password";
     }
 
-    // Go to Register page after 1-second delay
-    function goToRegister() {
+    function redirectToRegister() {
+      // Adding 1 second delay before redirecting to register.html
       setTimeout(function() {
-        window.location.href = "register.html"; // Redirect to register.html after 1 second delay
-      }, 1000); // 1000 milliseconds = 1 second
+        window.location.href = "register.html";
+      }, 1000);
     }
   </script>
-
 </body>
 </html>
